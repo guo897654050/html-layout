@@ -1,0 +1,127 @@
+<!doctype html>
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Our first responsive web page with HTML5 and CSS3</title>
+		<meta name="description" content="A basic responsive web page – an example from Chapter 1">
+		<meta name="viewport" content="width=device-width">
+	</head>
+	<style>
+		img {
+			border-radius: 50%;
+		}
+
+		section {
+			width: 100%;
+			/*min-width: 500px;*/
+			background: #f5f5f5;
+			/*box-shadow: 0 0 1px red;*/
+		}
+		section:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+		article {
+			box-sizing: border-box;
+			width: 50%;
+			height: 250px;
+			padding:20px;
+			text-align: center;
+			float: left;
+			border-bottom: 1px solid rgba(0,0,0,.2);
+			border-right: 1px solid rgba(0,0,0,.2);
+		}
+		article:nth-child(odd) {
+			border-left: 1px solid rgba(0,0,0,.2);
+		}
+		article:nth-child(2) {
+			height: 500px;
+			padding-top: 150px;
+		}
+		article:nth-child(3) {
+			margin-top: -250px;
+		}
+		article:nth-child(-n+3) {
+			border-top: 1px solid rgba(0,0,0,.2);
+		}
+		h1 {
+			font-size: 34px;
+			margin: 10px 0;
+			color: #666;
+		}
+		article p {
+			font-size: 15px;
+			margin-bottom: 10px;
+			color: #999;
+		}
+		/* ----- */
+		/*.row {
+			margin-top: 20px;
+			border: 1px solid red;
+
+		}*/
+		/*.row:after {
+			content: '';
+			display: table;
+			clear: both;
+
+		}*/
+		.main {
+			height: 500px;
+			width: 100%;
+			background-color: orange;
+			float: right; 
+			margin-left: -400px;
+		}
+		.content {
+			padding-left: 400px;
+			/*clear: both*/
+		}
+		.side {
+			background: pink;
+			width: 400px;
+			height: 500px;
+			float: left
+		}
+		img {
+			width: 100px;
+			height: 100px
+		}
+	</style>
+	<body style="overflow: auto">
+		<!-- 4个格子, 如果为每个格子设置border1px,重合部分会有2px-->
+		<section>
+			<article>
+				<h1>UIysses</h1>
+				<p>堆堆堆堆排序qqqqqqqqqqqqqqqqqq</p>
+				<img src="logo1.jpg" width="100" height="100" alt="1">
+			</article>
+			<article>
+				<h1>Dalas</h1>
+				<p>选择选择选择排序qwwwwwwwwwwwwwwwwwwwww</p>
+				<img src="logo2.jpg" width="100" height="100" alt="1">
+			</article>
+			<article>
+				<h1>Makty</h1>
+				<p>插入插入排序rrrrrrrrrrrrrrrrrrrrr</p>
+				<img src="logo3.jpg" width="100" height="100" alt="1">
+			</article>
+			<!-- <article>
+				<h1>Theis</h1>
+				<p>冒泡冒泡排序wwwwwwwwwwwwwwwwww</p>
+				<img src="logo4.jpg" width="100" height="100" alt="1">
+			</article> -->
+		</section>
+		<row class="row">
+			<div class="main">
+				<div class="content">
+					<img src="logo4.jpg">
+				</div>
+			</div>
+			<div class="side">
+				<img src="logo3.jpg">
+			</div>
+		</row>
+	</body>
+</html>

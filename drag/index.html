@@ -1,0 +1,54 @@
+<!doctype html>
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Our first responsive web page with HTML5 and CSS3</title>
+		<meta name="description" content="A basic responsive web page – an example from Chapter 1">
+		<meta name="viewport" content="width=device-width">
+	</head>
+	<style>
+		body {
+			position: relative;
+		}
+		#logo {
+			width: 300px;
+			height: 200px;
+			position: absolute;
+			border: 1px dashed #37AE60;
+			left: 0;
+		}
+		#box {
+			width: 300px;
+			height: 200px;
+			background: #d4efdf;
+			border-radius: 10px;
+			border: 5px dashed #27AE60;
+			position: absolute;
+			right: 0;
+		}
+	</style>
+	<body>
+		<div id="logo">
+			<img id="img" src="logo.jpg" width="300" height="200">
+		</div>
+		<div id="box"></div>
+		<script type="text/javascript">
+			let img = document.getElementById('img')
+			img.draggable = true
+			let box = document.getElementById('box')
+			box.ondragover = function(e) {
+				e.preventDefault()
+			}
+			box.ondrop = function(e) {
+				box.appendChild(img)
+			}
+			let logo = document.getElementById('logo')
+			logo.ondragover = function(e) {
+				e.preventDefault()
+			}
+			logo.ondrop = function(e) {
+				logo.appendChild(img)
+			}
+		</script>
+	</body>
+</html>

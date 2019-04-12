@@ -1,0 +1,64 @@
+<!doctype html>
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Our first responsive web page with HTML5 and CSS3</title>
+		<meta name="description" content="A basic responsive web page – an example from Chapter 1">
+		<meta name="viewport" content="width=device-width">
+	</head>
+	<style>
+		body {
+			min-width: 950px;
+		}
+		img {
+			width: 100px;
+			height: 100px;
+		}
+
+		#left {
+			background: #16a805;
+			width: 350px;
+			margin-left: -100%;
+			position: relative;
+			right: 350px;
+		}
+		
+		#main {
+			background: #1abc9c;
+			width: 100%;
+		}
+
+		#right {
+			background: #14856d;
+			width: 250px;
+			/*使得right向右推移了250px,正好与第一列不重叠*/
+			margin-right: -250px;
+		}
+
+		.col {
+			float: left;
+			height: 500px;
+		}
+
+		#container {
+			padding-left: 350px;
+			padding-right: 250px;
+		}
+	</style>
+	<body>
+		<div id="container">
+			<div id="main" class="col">
+				<img src="logo2.jpg">
+				<p>寻寻觅觅冷冷清清</p>
+			</div>
+			<div id="left" class="col">
+				<img src="logo3.jpg">
+				<p>凄凄惨惨戚戚</p>
+			</div>
+			<div id="right" class="col">
+				<img src="logo4.jpg">
+				<p>乍暖还寒时候最难将息</p>
+			</div>
+		</div>
+	</body>
+</html>
