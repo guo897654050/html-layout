@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML5 Example</title>
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	body {
+		background: #7F8C8D;
+		margin: 50px;
+		font-family: "Helvetica Neue", sans-serif;
+		color: rgba(255,255,255,.8);
+		text-align: center;
+	}
+	h1{
+		font-size: 42px;
+		margin: 30px auto;
+	}
+	#slideshow {
+		width: 980px;
+		height: 450px;
+		overflow: hidden;
+		margin: 0 auto;
+		position: relative;
+	}
+	#slideshow ul, #slideshow ul li {
+		list-style: none;
+		position: absolute;
+	}
+	#slideshow-nav {
+		width: 100%;
+		bottom: 20px;
+		text-align: center;
+		position: absolute;
+	}
+	#slideshow-nav span {
+		display: inline-block;
+		margin: 0 7px;
+		border-radius: 50%;
+		width: 15px;
+		height: 15px;
+		font-size: 0;
+		background: rgba(255,255,255,.3);
+		transition: all .5s;
+		cursor: pointer;
+		user-select: none; /*使得原点无法选中*/
+	}
+	#slideshow-nav span.active{
+		background:#fff;
+	}
+</style>
+</head>
+
+<body>
+<h1>Slideshow component</h1>
+<div id="slideshow">
+  <ul>
+    <li><img src="p1.jpg"></li>
+    <li><img src="p2.jpg"></li>
+    <li><img src="p3.jpg"></li>
+    <li><img src="p4.jpg"></li>
+  </ul>
+  <div id="slideshow-nav"></div>
+</div>
+<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		let duration = 3000; //每张图片的持续时间
+		let speed = 1000; //图片切换的动画时间
+		let width = $('#slideshow').width(); //获取单张图片的宽度;
+		let curIndex = 0; //当前的图片的索引值
+		let totalIndex = $('#slideshow > ul > li').length; //获得总的图片的数量
+		let timer; //设置一个计时变量
+		$('#slideshow > ul > li').each(function(index) {
+			$(this).css('left', index*width + 'px'); //设置图片左移
+			$('#slideshow-nav').append("<span>" + (index+1) + "</span>")
+		})
+		$('#slideshow-nav > span').eq(0).addClass('active'); //设置第一个圆点为active
+		let firstChild = $('#slideshow > ul > li').eq(0).clone(); //将图片复制一份
+		$('#slideshow > ul').append(firstChild);
+		firstChild.css('left', totalIndex*width + 'px');
+		//核心move
+		function move() {
+			curIndex++;
+			if (curIndex>totalIndex) {
+				curIndex = 1;
+				$('#slideshow > ul').css('left', '0px'); //将图片重新排列
+			}
+			for (let i = 0;i < totalIndex; i++) {
+				$('#slideshow-nav > span').eq(i).removeClass('active'); //清除所有节点的acitve
+			}
+			if (curIndex === totalIndex) {
+				console.log('curindex',curIndex, 'total',totalIndex)
+				//说明是第一张图片
+				$('#slideshow-nav > span').eq(0).addClass('active');
+			} else {
+				console.log('curIndex2',curIndex)
+				$('#slideshow-nav > span').eq(curIndex).addClass('active');
+			}
+			$('#slideshow > ul').animate({left: width*curIndex*-1 + 'px'}, speed);
+			timer = setTimeout(move, duration+speed);
+		}
+		setTimeout(move, duration);
+		$('#slideshow-nav > span').each(function(index) {
+			$(this).attr('index', index);
+			$(this).click(function(){
+				curIndex = $(this).attr('index') - 1;
+				clearTimeout(timer);
+				move();
+			})
+		})
+
+	})
+</script>
+</body>
+</html>

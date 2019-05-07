@@ -1,0 +1,61 @@
+<!doctype html>
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Our first responsive web page with HTML5 and CSS3</title>
+		<meta name="description" content="A basic responsive web page – an example from Chapter 1">
+		<meta name="viewport" content="width=device-width">
+	</head>
+	<style>
+		@font-face {			  
+		font-family: 'icon-font';			  
+		src: url('http://at.alicdn.com/t/font_1469410270_4028482.eot'); /* IE9*/			  
+		src: url('http://at.alicdn.com/t/font_1469410270_4028482.eot?#iefix')format('embedded-opentype'),	  
+		url('http://at.alicdn.com/t/font_1469410270_4028482.woff')format('woff'), /* chrome、firefox */			
+		url('http://at.alicdn.com/t/font_1469410270_4028482.ttf')format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/			  
+		url('http://at.alicdn.com/t/font_1469410270_4028482.svg#iconfont')format('svg'); /* iOS 4.1- */			
+		}			
+		/*.icon-font{				
+			font-family:"icon-font";				
+			font-size:16px;				
+			font-style:normal;			
+		}	*/
+		.close {
+			font-size: 0;
+			cursor: pointer;
+			display: block;
+			width: 100px;
+			height: 100px;
+			line-height: 100px;
+			border-radius: 50%;
+			background: #a5a5a5;
+			color: #8b8ab3;
+			text-align: center;
+		}
+		.close:before {
+			content: "\e601";
+			font-family: 'icon-font';
+			speak: none;
+			font-size: 48px;
+			display: block;
+		}
+		.close:hover:before {
+			/*transform: rotate(360deg);
+			transition: 1s linear;*/
+			animation: spin 1s linear 1s 1;
+		}
+		@keyframes spin {
+			from {
+				transform: rotate(0deg);
+			}
+			to {
+				transform: rotate(360deg);
+			}
+		}
+	</style>
+	<body>
+		<section>
+			<span class="close">Close</span>
+		</section>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Our first responsive web page with HTML5 and CSS3</title>
+		<meta name="description" content="A basic responsive web page – an example from Chapter 1">
+		<meta name="viewport" content="width=device-width">
+	</head>
+	<style>
+		body {
+			background: #d4676a;
+			margin: 50px;
+			font-family: sans-serif;
+		}
+		article {
+			background: #fff;
+			border-radius: 4px;
+			padding: 20px 40px;
+			width: 400px;
+			box-shadow: 5px 7px 10px rgba(0,0,0,.1);
+			position: relative;
+		}
+		article h1 {
+			color: #d4676a;
+		}
+		article p {
+			color: #666;
+		}
+		article:after {
+			content: '';
+			position: absolute;
+			left: -40px;
+			top: 35px;
+			width: 0;
+			height: 0;
+			border-width: 20px;
+			border-style: solid;
+			/*四个颜色*/
+			/*border-color: #390 #f30 #36f #ff3;*/
+			/*左三角外*/
+			/*border-color: transparent #fff transparent transparent;*/
+		}
+		article:after {
+			content: '';
+			position: absolute;
+			left: 0px;
+			top: 35px;
+			width: 0;
+			height: 0;
+			border-width: 10px;
+			border-style: solid;
+			border-color: transparent transparent transparent #d4676a;
+		}
+	</style>
+	<body>
+		<article>
+			<h1>Lorem uipsum</h1>
+			<p>this is my test html and saojiaohuizh</p>
+		</article>
+	</body>
+</html>

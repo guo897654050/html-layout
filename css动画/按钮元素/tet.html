@@ -1,0 +1,56 @@
+<!doctype html>
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Our first responsive web page with HTML5 and CSS3</title>
+		<meta name="description" content="A basic responsive web page – an example from Chapter 1">
+		<meta name="viewport" content="width=device-width">
+	</head>
+	<style>
+		a {
+			color: #fff;
+			text-decoration: none;
+			font-family: sans-serif;
+			font-size: 34px;
+			display: block;
+			width: 300px;
+			height: 50px;
+			margin: 0 auto;
+			line-height: 50px;
+			border: 1px solid red;
+			border-radius: 4px;
+			text-align: center;
+			box-sizing: border-box;
+			padding-left: 140px;
+			position: relative;
+			transition: all 0.5s;
+		}
+		a:hover {
+			color: #d53ea4;
+			background: #fff;
+			padding-left: 20px;
+		}
+		a:after {
+			font-family: 'icon-font';
+			content: 'e\607';
+			position: absolute;
+			right: 85%;
+			/*transition: all .5s;*/
+		}
+		a:hover:after {
+			right:5%;
+		}
+		section {
+			background: #a5a5a5;
+			width: 350px;
+			height: 60px;
+			display: flex;
+			align-items: center
+		}
+	</style>
+	<body>
+		<section>
+			<a href="#"> this is link</a>
+		</section>
+	</body>
+</html>

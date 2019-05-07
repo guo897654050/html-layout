@@ -1,0 +1,105 @@
+<!doctype html>
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Our first responsive web page with HTML5 and CSS3</title>
+		<meta name="description" content="A basic responsive web page – an example from Chapter 1">
+		<meta name="viewport" content="width=device-width">
+	</head>
+
+	<style>			
+		@font-face {
+		  font-family: 'iconfont';  /* project id 1139422 */
+		  src: url('http://at.alicdn.com/t/font_1139422_pestgx6w8c.eot');
+		  src: url('http://at.alicdn.com/t/font_1139422_pestgx6w8c.eot?#iefix') format('embedded-opentype'),
+		  url('http://at.alicdn.com/t/font_1139422_pestgx6w8c.woff2') format('woff2'),
+		  url('http://at.alicdn.com/t/font_1139422_pestgx6w8c.woff') format('woff'),
+		  url('http://at.alicdn.com/t/font_1139422_pestgx6w8c.ttf') format('truetype'),
+		  url('http://at.alicdn.com/t/font_1139422_pestgx6w8c.svg#iconfont') format('svg');
+		}
+		.icon {
+			display: inline-block;
+			margin-left: 20px;
+			animation: move 1s cubic-bezier(.62,-0.91,.45,1.97);
+			animation-fill-mode: both;
+
+		}
+		@keyframes move {
+			from {
+				opacity: 0; /* 0是完全透明*/
+				transform: translateY(100%);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0%);
+
+			}
+		}
+		.home, .search, .user, .mail, .chat {
+			font-size: 0;
+			cursor: pointer;
+			width: 100px;
+			height: 100px;
+			line-height: 100px;
+			border-radius: 50%;
+			background: #a5a5a5;
+			color: #8b8ab3;
+			text-align: center;
+		}
+		.home {
+			animation-delay: .1s;
+		}
+		.search {
+			animation-delay: .2s;
+		}
+		.user {
+			animation-delay: .3s;
+		}
+		.mail {
+			animation-delay: .4s;
+		}
+		.chat {
+			animation-delay: .5s
+		}
+		.home:before {
+			content: '\e621';
+			font-family: 'iconfont';
+			speak: none;
+			font-size: 48px;
+			display: block;
+		}
+
+		.mail:before {
+			content: '\e601';
+			font-family: 'iconfont';
+			font-size: 48px;
+			display: block;
+		}
+		.chat:before {
+			content: '\e600';
+			font-family: 'iconfont';
+			font-size: 48px;
+			display: block;
+		}
+		.search:before {
+			content: '\e60b';
+			font-family: 'iconfont';
+			font-size: 48px;
+			display: block;
+		}
+		.user:before {
+			content: '\e604';
+			font-family: 'iconfont';
+			font-size: 48px;
+			display: block;
+		}
+	</style>	
+	</head>	
+	<body>		
+		<span class="home icon">Home</span>
+		<span class="search icon">Search</span>
+		<span class="user icon">User</span>
+		<span class="mail icon">Mail</span>
+		<span class="chat icon">Chat</span>
+	</body>
+	</html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Our first responsive web page with HTML5 and CSS3</title>
+		<meta name="description" content="A basic responsive web page – an example from Chapter 1">
+		<meta name="viewport" content="width=device-width">
+	</head>
+	<style>
+		body {
+			background: #006b9d;
+		}
+		#verify {
+			width: 508px;
+			height: 523px;
+			background: url(bg.png);
+			margin: 50px auto;
+			position: relative;
+		}
+		#drag {
+			width: 171px;
+			height: 400px;
+			background: url(drag.png) no-repeat;
+			position: absolute;
+			top: 185px;
+			left: 0px;
+		}
+		#dot {
+			width: 200px;
+			height: 29px;
+			background: url(dot.png) no-repeat;
+			position: absolute;
+			top: 460px;
+			left: 70px;
+		}
+		#success {
+			position: absolute;
+			display: none;
+			font-size: 32px;
+			right: 0;
+			top: 130px;
+			font-family: sans-serif;
+			color: #fff;
+			background: #c33;
+			padding: 5px 20px;
+		}
+	</style>
+	<body>
+		<div id='verify'>
+			<div id="drag"></div>
+			<div id="dot"></div>
+			<p id="success">Success!</p>
+		</div>
+		<script type="text/javascript">
+			let max = 350; //设置可拖动的最大范围，时期不至于被拖动到轨迹外面，数值为滑块区域的宽度减去滑块的自身宽度
+			let final = 158; //拼图的正确位置坐标
+			let buffer = 7; //缓冲距离
+			let success = document.getElementById('success');
+			let dot = document.getElementById('dot');
+			let drag = document.getElementById('drag');
+			let dotStart = dot.offsetLeft; //获取滑块的左起始坐标
+			drag.style.left = -Math.random()*200 + drag.offsetLeft + 'px';//使得拼图向随机移动一段距离，别离得太近
+			let dragStart = drag.offsetLeft;
+			console.log("dragLeft",dragStart)
+			dot.onmousedown = function(e) {
+				let startx = e.clientX;  //获取按下鼠标指针x坐标
+				console.log(startx)
+				let dotLeft = dot.offsetLeft;  //获取按下时滑块的x坐标,相对于父元素
+				console.log("dotleft",dotLeft)
+				document.onmousemove = function(e) { //此时，鼠标在页面中移动时，触发函数
+					let move = e.clientX - startx; //计算当前鼠标指针x坐标与初始坐标之间的距离
+					let to =  dotLeft + move; //将上述加上滑块的起始距离，得到目的地距离；
+					if (to > max + dotStart) { //判断如果目的地距离超出了dot的最大距离加上的dot的开始的左偏移距离
+						to = max + dotStart
+					} else if (to < dotStart) { // 如果目的距离比一开始滑块的左偏移距离还小
+						to = dotStart
+					}
+					dot.style.left = to + 'px';
+					drag.style.left = (dragStart + to - dotStart) + 'px'; //这里不使用move，因为move的距离可以很大，而to-dotStrat最大最小是固定
+				}
+				document.onmouseup = function(e) { //鼠标松开左键执行下列函数
+					this.onmousemove = null; //清除mousemove的监听
+					if (Math.abs(drag.offsetLeft - final) <= buffer) { //如果拼图的目的地距离小鱼缓冲距离，默认重合，都是以左侧
+						success.style.display = 'block';
+					} else {
+						success.style.display = "none";
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
